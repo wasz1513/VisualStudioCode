@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS</title>
+</head>
+<body>
+    
+    <!-- Vue에서 제어할 출력 영역 -->
+    <div id="app">
+        <select>
+            <option value="">옵션을 선택하세요</option>
+            <option v-for="(v, status) in list" v-bind:index="status">{{status}}-{{v}}</option>
+        </select>
+    </div>
+
+    <!-- VueJS CDN -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        // VueModel 생성
+        var app = new Vue({
+            el:"#app", //제어대상
+            data:{ // 사용할 모델(데이터)
+               list:[],
+            },
+        }); 
+    </script>
+
+</body>
+</html>
