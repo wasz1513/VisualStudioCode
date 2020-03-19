@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS</title>
+</head>
+<body>
+    
+    <!-- Vue에서 제어할 출력 영역 -->
+    <div id="app">
+       {{count }}
+    </div>
+
+    <!-- VueJS CDN -->
+    <script src="https://unpkg.com/vue"></script>
+    <!-- Axios CDN -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        // VueModel 생성
+        var app = new Vue({
+            el:"#app", //제어대상
+            data:{ // 사용할 모델(데이터)
+                count:0,
+            },
+            created:function(){
+                // console.log("created");
+                axios.get("http://localhost/station/count")
+                        // .then(function(resp){})
+                        .then(resp=>{
+                            console.log("성공", resp)
+                            this.count = resp.data;
+                        })
+                        // .catch(function(err){})
+                        .catch(err=>{
+                            console.log("실패", err)
+                        });
+            },
+            mounted:function(){
+                // console.log("mounted");
+            },
+            updated:function(){
+                // console.log("updated");
+            },
+        }); 
+    </script>
+
+</body>
+</html>
