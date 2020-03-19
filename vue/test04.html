@@ -32,7 +32,9 @@
             },
             computed:{
                 isEmailValid:function(){
-                  return this.email.length>=8 && this.email.length<=20;  
+                    var regex = /[a-zA-Z0-9-_]{8,20}/g;
+                    return regex.test(this.email);
+                    // return this.email.length>=8 && this.email.length<=20;  
                 },
                 isPasswordValid:function(){
                     return this.password.length>=6 && this.password.length<=15;
